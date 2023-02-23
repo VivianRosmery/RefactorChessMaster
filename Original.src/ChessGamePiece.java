@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import java.util.List;
+
 // -------------------------------------------------------------------------
 /**
  * Abstract class that is used to represent a game piece on the chess board.
@@ -338,32 +340,34 @@ public abstract class ChessGamePiece{
      *            the number of moves to calculate
      * @return ArrayList<String> the moves in this direction
      */
-    protected ArrayList<String> calculateSouthWestMoves(
+
+    //Primera refactorización - Patron de simplificación
+    // patron de eliminación de duplicación
+    
+    protected List<String> calculateSouthMoves(
         ChessGameBoard board,
-        int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        int numMoves) {
+        List<String> moves = new ArrayList<>();
+        if (!isPieceOnScreen()) {
+            return moves;
+        }
+
         int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow + i, pieceColumn - i )
-                    && ( board.getCell( pieceRow + i,
-                        pieceColumn - i ).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
+        for (int i = pieceRow + 1; i < 8 && count < numMoves; i++) {
+            ChessCell cell = board.getCell(i, pieceColumn);
+            if (cell.getPieceOnSquare() == null || isEnemy(board, i, pieceColumn)) {
+                moves.add(i + "," + pieceColumn);
+                count++;
+                if (isEnemy(board, i, pieceColumn)) {
                     break;
                 }
-                else
-                {
-                    break;
-                }
+            } else {
+                break;
             }
         }
         return moves;
     }
+
     // ----------------------------------------------------------
     /**
      * Calculates and returns moves in the south-east direction relative to this
