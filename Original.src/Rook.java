@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.List;
 // -------------------------------------------------------------------------
 /**
  * Represents a Rook game piece.
@@ -36,7 +37,7 @@ public class Rook
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
+        List<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
         ArrayList<String> allMoves = new ArrayList<String>();

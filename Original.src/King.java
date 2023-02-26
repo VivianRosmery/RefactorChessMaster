@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.List;
 // -------------------------------------------------------------------------
 /**
  * Represents a King game piece.
@@ -42,7 +43,8 @@ public class King
         ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 1 );
         ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 1 );
         ArrayList<String> northMoves = calculateNorthMoves( board, 1 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 1 );
+        //Refactorización
+        List<String> southMoves = calculateSouthMoves( board, 1 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 1 );
         ArrayList<String> westMoves = calculateWestMoves( board, 1 );
         ArrayList<String> allMoves = new ArrayList<String>();

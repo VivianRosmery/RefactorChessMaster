@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.List;
 // import java.awt.Color;
 // -------------------------------------------------------------------------
 /**
@@ -40,7 +41,7 @@ public class Queen
         ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
         ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 8 );
         ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
+        List<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
         ArrayList<String> allMoves = new ArrayList<String>();

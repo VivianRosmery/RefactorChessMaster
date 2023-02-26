@@ -130,7 +130,7 @@ public abstract class ChessGamePiece{
      *            the number of moves to calculate
      * @return ArrayList<String> the calculated moves.
      */
-    protected ArrayList<String> calculateSouthMoves(
+    /*protected ArrayList<String> calculateSouthMoves(
         ChessGameBoard board,
         int numMoves ){
         ArrayList<String> moves = new ArrayList<String>();
@@ -152,8 +152,36 @@ public abstract class ChessGamePiece{
             }
         }
         return moves;
+    }*/
+    //Primera refactorización - Patron de simplificación
+    // patron de eliminación de duplicación
+
+    protected List<String> calculateSouthMoves(
+        ChessGameBoard board,
+        int numMoves) {
+        List<String> moves = new ArrayList<>();
+
+        if (!isPieceOnScreen()) {
+            return moves;
+        }
+
+        int count = 0;
+        for (int i = pieceRow + 1; i < 8 && count < numMoves; i++) {
+            if ((board.getCell(i, pieceColumn).getPieceOnSquare()
+                    == null || isEnemy(board, i, pieceColumn))) {
+                moves.add(i + "," + pieceColumn);
+                count++;
+                if (isEnemy(board, i, pieceColumn)) {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        return moves;
     }
     // ----------------------------------------------------------
+
     /**
      * Calculates and returns moves in the north direction relative to this
      * piece.
@@ -341,28 +369,28 @@ public abstract class ChessGamePiece{
      * @return ArrayList<String> the moves in this direction
      */
 
-    //Primera refactorización - Patron de simplificación
-    // patron de eliminación de duplicación
-    
-    protected List<String> calculateSouthMoves(
-        ChessGameBoard board,
-        int numMoves) {
-        List<String> moves = new ArrayList<>();
-        if (!isPieceOnScreen()) {
-            return moves;
-        }
-
+    protected ArrayList<String> calculateSouthWestMoves(
+            ChessGameBoard board,
+            int numMoves ){
+        ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
-        for (int i = pieceRow + 1; i < 8 && count < numMoves; i++) {
-            ChessCell cell = board.getCell(i, pieceColumn);
-            if (cell.getPieceOnSquare() == null || isEnemy(board, i, pieceColumn)) {
-                moves.add(i + "," + pieceColumn);
-                count++;
-                if (isEnemy(board, i, pieceColumn)) {
+        if ( isPieceOnScreen() ){
+            for ( int i = 1; i < 8 && count < numMoves; i++ ){
+                if ( isOnScreen( pieceRow + i, pieceColumn - i )
+                        && ( board.getCell( pieceRow + i,
+                        pieceColumn - i ).getPieceOnSquare() == null ) ){
+                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
+                    count++;
+                }
+                else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
+                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
+                    count++;
                     break;
                 }
-            } else {
-                break;
+                else
+                {
+                    break;
+                }
             }
         }
         return moves;
