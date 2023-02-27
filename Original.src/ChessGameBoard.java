@@ -223,6 +223,7 @@ public class ChessGameBoard extends JPanel{
                 else {
                     pieceToAdd = null;
                 }
+
                 chessCells[i][j] = new BoardSquare( i, j, pieceToAdd );
                 if ( ( i + j ) % 2 == 0 ){
                     chessCells[i][j].setBackground( Color.WHITE );
@@ -235,6 +236,7 @@ public class ChessGameBoard extends JPanel{
             }
         }
     }
+
     // ----------------------------------------------------------
     /**
      * Clears the colors on the board.
@@ -267,7 +269,7 @@ public class ChessGameBoard extends JPanel{
             isWhite = !isWhite;
         }
     }
-    
+
     /**
      * Listens for clicks on BoardSquares.
      *
