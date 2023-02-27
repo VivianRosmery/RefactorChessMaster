@@ -73,6 +73,7 @@ public class ChessGameBoard extends JPanel{
      *
      * @return ArrayList<GamePiece> the pieces
      */
+    /*
     public ArrayList<ChessGamePiece> getAllWhitePieces(){
         ArrayList<ChessGamePiece> whitePieces = new ArrayList<ChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
@@ -85,7 +86,22 @@ public class ChessGameBoard extends JPanel{
             }
         }
         return whitePieces;
+    }*/
+    //quinta refactorización -  Patron de simplificación
+    //patron de eliminación de duplicación
+    public ArrayList<ChessGamePiece> getAllWhitePieces() {
+        ArrayList<ChessGamePiece> whitePieces = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                ChessGamePiece piece = chessCells[i][j].getPieceOnSquare();
+                if (piece != null && piece.getColorOfPiece() == ChessGamePiece.WHITE) {
+                    whitePieces.add(piece);
+                }
+            }
+        }
+        return whitePieces;
     }
+
     // ----------------------------------------------------------
     /**
      * Gets all the black pieces on the board
