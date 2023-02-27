@@ -664,7 +664,7 @@ public abstract class ChessGamePiece{
      *            the game board to check
      * @return true if there are legal moves, false if there are not
      */
-    public boolean hasLegalMoves( ChessGameBoard board ){
+    /*public boolean hasLegalMoves( ChessGameBoard board ){
         updatePossibleMoves( board );
         if ( isPieceOnScreen() ){
             for ( String locStr : possibleMoves ){
@@ -679,7 +679,26 @@ public abstract class ChessGamePiece{
             return false;
         }
         return false;
+    }*/
+    //Tercera refactorización - Patron de simplificación
+    //patron de eliminación de duplicación
+
+    public boolean hasLegalMoves(ChessGameBoard board) {
+        updatePossibleMoves(board);
+        if (!isPieceOnScreen()) {
+            return false;
+        }
+        for (String locStr : possibleMoves) {
+            String[] currCoords = locStr.split(",");
+            int row = Integer.parseInt(currCoords[0]);
+            int col = Integer.parseInt(currCoords[1]);
+            if (canMove(board, row, col)) {
+                return true;
+            }
+        }
+        return false;
     }
+
     // ----------------------------------------------------------
     /**
      * Determines if the row and column contains an enemy piece. This is defined
