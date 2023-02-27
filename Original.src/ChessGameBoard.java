@@ -147,7 +147,7 @@ public class ChessGameBoard extends JPanel{
             ( (ChessPanel)getParent() ).getGraveyard( 2 ).clearGraveyard();
             ( (ChessPanel)getParent() ).getGameLog().clearLog();
         }
-        for ( int i = 0; i < chessCells.length; i++ ){
+        /*for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 chessCells[i][j] = new BoardSquare( i, j, null );
                 if ( ( i + j ) % 2 == 0 ){
@@ -162,10 +162,30 @@ public class ChessGameBoard extends JPanel{
                     this.add( chessCells[i][j] );
                 }
             }
+        }*/
+        // Sexta refactorización -  Patron de simplificación
+        //    // patron de eliminación de duplicación
+        for (int i = 0; i < chessCells.length; i++) {
+            for (int j = 0; j < chessCells[0].length; j++) {
+                chessCells[i][j] = new BoardSquare(i, j, null);
+                setColorOfSquare(chessCells[i][j], i, j);
+                if (addAfterReset) {
+                    chessCells[i][j].addMouseListener(listener);
+                    this.add(chessCells[i][j]);
+                }
+            }
         }
         repaint();
         //revalidate();
         // only the combination of these two calls work...*shrug*
+    }
+    // Se agrego un nuevo metodo (Sexta refactorización)
+    private void setColorOfSquare(BoardSquare square, int row, int col){
+        if ((row + col) % 2 == 0) {
+            square.setBackground(Color.WHITE);
+        } else {
+            square.setBackground(Color.BLACK);
+        }
     }
     /**
      * (Re)initializes this ChessGameBoard to its default layout with all 32
