@@ -239,7 +239,7 @@ public class ChessGameBoard extends JPanel{
     /**
      * Clears the colors on the board.
      */
-    public void clearColorsOnBoard(){
+    /*public void clearColorsOnBoard(){
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 if ( ( i + j ) % 2 == 0 ){
@@ -251,7 +251,23 @@ public class ChessGameBoard extends JPanel{
                 }
             }
         }
+    }*/
+
+    // Decima refactorización: Metodo de simplificación
+    // Metodo de eliminación de codigo duplicado
+
+    public void clearColorsOnBoard() {
+        boolean isWhite = true;
+        for (int i = 0; i < chessCells.length; i++) {
+            for (int j = 0; j < chessCells[0].length; j++) {
+                Color cellColor = isWhite ? Color.WHITE : Color.BLACK;
+                chessCells[i][j].setBackground(cellColor);
+                isWhite = !isWhite;
+            }
+            isWhite = !isWhite;
+        }
     }
+    
     /**
      * Listens for clicks on BoardSquares.
      *
