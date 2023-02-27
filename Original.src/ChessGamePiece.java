@@ -694,7 +694,7 @@ public abstract class ChessGamePiece{
      *            the board to check
      * @return true if it is an enemy piece, false if not
      */
-    public boolean isEnemy( ChessGameBoard board, int row, int col ){
+   /* public boolean isEnemy( ChessGameBoard board, int row, int col ){
         if ( row > 7 || col > 7 || row < 0 || col < 0 ){
             return false;
         }
@@ -726,7 +726,29 @@ public abstract class ChessGamePiece{
                 return false;
             }
         }
+    }*/
+    // Segunda refactorización - Patron de simplificación
+    // patron de eliminación de duplicación
+    public boolean isEnemy(ChessGameBoard board, int row, int col) {
+        if (row > 7 || col > 7 || row < 0 || col < 0) {
+            return false;
+        }
+
+        ChessGamePiece enemyPiece = board.getCell(row, col).getPieceOnSquare();
+        if (enemyPiece == null || this.getColorOfPiece() == ChessGamePiece.UNASSIGNED
+                || enemyPiece.getColorOfPiece() == ChessGamePiece.UNASSIGNED) {
+            return false;
+        }
+
+        if (this.getColorOfPiece() == ChessGamePiece.WHITE && enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK) {
+            return true;
+        } else if (this.getColorOfPiece() == ChessGamePiece.BLACK && enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE) {
+            return true;
+        }
+
+        return false;
     }
+
     // ----------------------------------------------------------
     /**
      * Gets a list of GamePieces that can currently attack this game piece.
