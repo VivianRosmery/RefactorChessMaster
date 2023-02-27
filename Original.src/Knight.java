@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.Objects;
 // -------------------------------------------------------------------------
 /**
  * Represents a Knight game piece.
@@ -26,6 +27,27 @@ public class Knight
     public Knight( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
     }
+
+    //Septima refactorización: Patron de simplificación
+    //patron de eliminación de duplicación
+
+    /* Se agrego un nuevo metodo getStrings */
+
+    private ArrayList<String> getStrings(ChessGameBoard board, int i2, int i3, int i4, int i5) {
+        ArrayList<String> moves = new ArrayList<String>();
+        for (int i = i2; i >= -i2; i -= i3){
+            for (int j = i4; j >= -i4; j -= i5){
+                if ( isOnScreen( pieceRow + i, pieceColumn + j )
+                        && ( isEnemy( board, pieceRow + i, pieceColumn + j ) ||
+                            board.getCell( pieceRow + i,pieceColumn + j )
+                            .getPieceOnSquare() == null ) ){
+                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn + j ) );
+                }
+            }
+        }
+        return moves;
+    }
+
     /**
      * Calculates the moves of the knight in the north direction relative to the
      * location of the piece.
@@ -34,8 +56,10 @@ public class Knight
      *            the board to check moves on
      * @return ArrayList<String> a list of the possible moves
      */
+
+    //Octava Refactorización - Patron de simplificación
     private ArrayList<String> calculateNorthMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
+        /*ArrayList<String> moves = new ArrayList<String>();
         for ( int i = 2; i >= -2; i -= 4 ){
             for ( int j = 1; j >= -1; j -= 2 ){
                 if ( isOnScreen( pieceRow + i, pieceColumn + j )
@@ -48,7 +72,8 @@ public class Knight
                 }
             }
         }
-        return moves;
+        return moves;*/
+        return getStrings(board,2,4,1,2);
     }
     /**
      * Calculates the moves of the knight in the south direction relative to the
@@ -58,8 +83,9 @@ public class Knight
      *            the board to check moves on
      * @return ArrayList<String> a list of the possible moves
      */
+    // Octava refactorización - Metod de simplificación
     private ArrayList<String> calculateSouthMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
+        /*ArrayList<String> moves = new ArrayList<String>();
         for ( int i = 1; i >= -1; i -= 2 ){
             for ( int j = 2; j >= -2; j -= 4 ){
                 if ( isOnScreen( pieceRow + i, pieceColumn + j )
@@ -72,7 +98,8 @@ public class Knight
                 }
             }
         }
-        return moves;
+        return moves;*/
+        return getStrings(board,1,2,2,4);
     }
     /**
      * Calculates the possible moves for this Knight.
