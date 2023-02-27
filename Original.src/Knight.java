@@ -33,7 +33,7 @@ public class Knight
 
     /* Se agrego un nuevo metodo getStrings */
 
-    /*private ArrayList<String> getStrings(ChessGameBoard board, int i2, int i3, int i4, int i5) {
+    private ArrayList<String> getStrings(ChessGameBoard board, int i2, int i3, int i4, int i5) {
         ArrayList<String> moves = new ArrayList<String>();
         for (int i = i2; i >= -i2; i -= i3){
             for (int j = i4; j >= -i4; j -= i5){
@@ -42,25 +42,6 @@ public class Knight
                             board.getCell( pieceRow + i,pieceColumn + j )
                             .getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + j ) );
-                }
-            }
-        }
-        return moves;
-    }*/
-    //Disminuyendo su complejidad
-    private ArrayList<String> getStrings(ChessGameBoard board, int i2, int i3, int i4, int i5) {
-        ArrayList<String> moves = new ArrayList<String>();
-        int row, col;
-        BoardSquare cell;
-        for (int i = i2; i >= -i2; i -= i3) {
-            row = pieceRow + i;
-            for (int j = i4; j >= -i4; j -= i5) {
-                col = pieceColumn + j;
-                if (isOnScreen(row, col)) {
-                    cell = board.getCell(row, col);
-                    if (isEnemy(board, row, col) || cell.getPieceOnSquare() == null) {
-                        moves.add(row + "," + col);
-                    }
                 }
             }
         }
