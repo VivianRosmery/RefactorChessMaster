@@ -106,7 +106,7 @@ public class ChessGameEngine{
      * the correct color and if the user actually clicked ON a piece.)
      * @return boolean true if the piece is valid, false otherwise
      */
-    private boolean selectedPieceIsValid(){
+    /*private boolean selectedPieceIsValid(){
         if ( currentPiece == null ) // user tried to select an empty square
         {
             return false;
@@ -126,7 +126,21 @@ public class ChessGameEngine{
             }
             return false;
         }
+    }*/
+    //Tercera Refactorización de Codigo Critico - Segundo Avance
+    //Se usa los patrones de Singleton, Brigde y Builder
+    private boolean selectedPieceIsValid() {
+        if (currentPiece == null) {
+            return false;
+        } else if (currentPlayer == 2 && currentPiece.getColorOfPiece() == ChessGamePiece.BLACK) {
+            return true;
+        } else if (currentPlayer == 1 && currentPiece.getColorOfPiece() == ChessGamePiece.WHITE) {
+            return true;
+        } else {
+            return false;
+        }
     }
+    
     /**
      * Determines if the requested King is in check.
      *
