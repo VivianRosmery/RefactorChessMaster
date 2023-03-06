@@ -345,17 +345,16 @@ public class ChessGameEngine{
     }
 
     private void handleSecondClick(BoardSquare clickedSquare, ChessGamePiece pieceOnSquare) {
-        if (pieceOnSquare == null || !pieceOnSquare.equals(currentPiece)) {
+        if (pieceOnSquare != null && !pieceOnSquare.equals(currentPiece)) {
+            firstClick = true;
+        } else {
             boolean moveSuccessful = currentPiece.move(board, clickedSquare.getRow(), clickedSquare.getColumn());
-
             if (moveSuccessful) {
                 checkGameConditions();
             } else {
                 showMessageDialog(clickedSquare, buildInvalidMoveMessage(clickedSquare), MESSAGE_ERROR_TITLE, JOptionPane.ERROR_MESSAGE);
             }
 
-            firstClick = true;
-        } else {
             firstClick = true;
         }
     }
