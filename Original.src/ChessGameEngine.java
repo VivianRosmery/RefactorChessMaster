@@ -233,7 +233,7 @@ public class ChessGameEngine{
      * @return int 1 or 2 for the losing play, -1 for stalemate, or 0 for a
      *         still valid game.
      */
-    public int determineGameLost(){
+    /*public int determineGameLost(){
         if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) // player 1
         // loss
         {
@@ -252,12 +252,12 @@ public class ChessGameEngine{
             return -1;
         }
         return 0; // game is still in play
-    }
+    }*/
 
     //Segunda Refactorización de Codigo Critico - Segundo Avance
     // Se usa los patrones de Singleton, Brigde y Builder
 
-    /*public int determineGameLost() {
+    public int determineGameLost() {
         boolean player1Lost = king1.isChecked(board) && !playerHasLegalMoves(1);
         boolean player2Lost = king2.isChecked(board) && !playerHasLegalMoves(2);
         boolean isStalemate = (!king1.isChecked(board) && !playerHasLegalMoves(1)) ||
@@ -272,7 +272,7 @@ public class ChessGameEngine{
         } else {
             return 0;
         }
-    }/*
+    }
 
     // ----------------------------------------------------------
     /**
