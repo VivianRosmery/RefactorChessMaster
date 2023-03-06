@@ -1,0 +1,46 @@
+
+p
+java:S2293Æ"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293è"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293Š"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293¬"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293Ñ"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293÷"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(å¾Ù 
+p
+java:S2293‹"YReplace the type specification in this constructor call with the diamond operator ("<>").(î£Ô’
+t	java:S135©"YReduce the total number of break and continue statements in this loop to use at most one.(—ï½¢şÿÿÿÿ
+t	java:S135É"YReduce the total number of break and continue statements in this loop to use at most one.(ß™–øøÿÿÿÿ
+t	java:S135ë"YReduce the total number of break and continue statements in this loop to use at most one.(ù…ª±úÿÿÿÿ
+o	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(©ŠìÁ
+t	java:S135¯"YReduce the total number of break and continue statements in this loop to use at most one.(ƒú‘øÿÿÿÿ
+t	java:S135Ô"YReduce the total number of break and continue statements in this loop to use at most one.(ƒú‘øÿÿÿÿ
+t	java:S135ú"YReduce the total number of break and continue statements in this loop to use at most one.(ƒú‘øÿÿÿÿ
+t	java:S135 "YReduce the total number of break and continue statements in this loop to use at most one.(ƒú‘øÿÿÿÿ
+Œ
+java:S1319Š"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(œ›½şÿÿÿÿ
+O
+java:S5993<"9Change the visibility of this constructor to "protected".(¤ÌÅº
+O
+java:S5993\"9Change the visibility of this constructor to "protected".(¤ÌÅº
+W	java:S125‡"<This block of commented-out lines of code should be removed.(–Â¼ãùÿÿÿÿ
+U
+java:S1854¸"9Remove this useless assignment to local variable "count".(ëæûÿÿÿÿÿ
+U
+java:S1854İ"9Remove this useless assignment to local variable "count".(ëæûÿÿÿÿÿ
+U
+java:S1854ƒ"9Remove this useless assignment to local variable "count".(ëæûÿÿÿÿÿ
+U
+java:S1854©"9Remove this useless assignment to local variable "count".(ëæûÿÿÿÿÿ
+X
+java:S1126Ø"AReplace this if-then-else statement by a single return statement.(£óëÕ
+R	java:S125›"<This block of commented-out lines of code should be removed.(¡š»Å
+R	java:S125Ì"<This block of commented-out lines of code should be removed.(—Æ£Ö
+d
+java:S1871ü"MThis branch's code block is the same as the block for the branch on line 762.(€¾Ş·

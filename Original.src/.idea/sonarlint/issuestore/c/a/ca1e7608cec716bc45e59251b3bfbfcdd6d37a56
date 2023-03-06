@@ -1,0 +1,23 @@
+
+t
+java:S2293p"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÕÏÊÿùÿÿÿÿ
+†
+java:S1319\"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ïÞÞÙ
+‹
+java:S1319o"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¶ªäÝþÿÿÿÿ
+E
+java:S1948"*Make "listener" transient or serializable.(»ñ…øþÿÿÿÿ
+Q	java:S125M"<This block of commented-out lines of code should be removed.(ïÞÞÙ
+j
+java:S6201‘"NReplace this instanceof check and cast with 'instanceof ChessPanel chesspanel'(Ó–²üÿÿÿÿ
+j
+java:S6201‘"NReplace this instanceof check and cast with 'instanceof ChessPanel chesspanel'(Ó–²üÿÿÿÿ
+j
+java:S6201‘"NReplace this instanceof check and cast with 'instanceof ChessPanel chesspanel'(Ó–²üÿÿÿÿ
+W	java:S125–"<This block of commented-out lines of code should be removed.(–»áßýÿÿÿÿ
+R	java:S125³"<This block of commented-out lines of code should be removed.(‰êá‡
+n
+java:S3776Â"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(î°áãûÿÿÿÿ
+W	java:S125ô"<This block of commented-out lines of code should be removed.(µ‹îˆøÿÿÿÿ
+j
+java:S6201¤"NReplace this instanceof check and cast with 'instanceof ChessPanel chesspanel'(ÛÂäÁüÿÿÿÿ

@@ -262,7 +262,7 @@ public class ChessGameEngine{
      * @param e
      *            the mouse event from the listener
      */
-    public void determineActionFromSquareClick( MouseEvent e ){
+    /*public void determineActionFromSquareClick( MouseEvent e ){
         BoardSquare squareClicked = (BoardSquare)e.getSource();
         ChessGamePiece pieceOnSquare = squareClicked.getPieceOnSquare();
         board.clearColorsOnBoard();
@@ -273,24 +273,12 @@ public class ChessGameEngine{
                 squareClicked.setBackground( Color.GREEN );
                 firstClick = false;
             }
-            else
-            {
+            else {
                 if ( currentPiece != null ){
-                    JOptionPane.showMessageDialog(
-                        squareClicked,
-                        "You tried to pick up the other player's piece! "
-                            + "Get some glasses and pick a valid square.",
-                        "Illegal move",
-                        JOptionPane.ERROR_MESSAGE );
+                    JOptionPane.showMessageDialog(squareClicked,"You tried to pick up the other player's piece! "+ "Get some glasses and pick a valid square.","Illegal move",JOptionPane.ERROR_MESSAGE );
                 }
-                else
-                {
-                    JOptionPane.showMessageDialog(
-                        squareClicked,
-                        "You tried to pick up an empty square! "
-                            + "Get some glasses and pick a valid square.",
-                        "Illegal move",
-                        JOptionPane.ERROR_MESSAGE );
+                else {
+                    JOptionPane.showMessageDialog(squareClicked,"You tried to pick up an empty square! " + "Get some glasses and pick a valid square.","Illegal move",JOptionPane.ERROR_MESSAGE );
                 }
             }
         }
@@ -328,6 +316,62 @@ public class ChessGameEngine{
             {
                 firstClick = true;
             }
+        }*/
+
+    //Primera Refactorización de Codigo Critico - Segundo Avance
+    // Se usa los patrones de Singleton, Brigde y Builder
+    public void determineActionFromSquareClick(MouseEvent e) {
+        BoardSquare clickedSquare = (BoardSquare) e.getSource();
+        ChessGamePiece pieceOnSquare = clickedSquare.getPieceOnSquare();
+        board.clearColorsOnBoard();
+
+        if (firstClick) {
+            handleFirstClick(clickedSquare, pieceOnSquare);
+        } else {
+            handleSecondClick(clickedSquare, pieceOnSquare);
         }
     }
+
+    private void handleFirstClick(BoardSquare clickedSquare, ChessGamePiece pieceOnSquare) {
+        currentPiece = clickedSquare.getPieceOnSquare();
+
+        if (selectedPieceIsValid()) {
+            currentPiece.showLegalMoves(board);
+            clickedSquare.setBackground(Color.GREEN);
+            firstClick = false;
+        } else {
+            showMessageDialog(clickedSquare, MESSAGE_INVALID_SELECTION, MESSAGE_ERROR_TITLE, JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void handleSecondClick(BoardSquare clickedSquare, ChessGamePiece pieceOnSquare) {
+        if (pieceOnSquare == null || !pieceOnSquare.equals(currentPiece)) {
+            boolean moveSuccessful = currentPiece.move(board, clickedSquare.getRow(), clickedSquare.getColumn());
+
+            if (moveSuccessful) {
+                checkGameConditions();
+            } else {
+                showMessageDialog(clickedSquare, buildInvalidMoveMessage(clickedSquare), MESSAGE_ERROR_TITLE, JOptionPane.ERROR_MESSAGE);
+            }
+
+            firstClick = true;
+        } else {
+            firstClick = true;
+        }
+    }
+
+    private void showMessageDialog(BoardSquare parent, String message, String title, int messageType) {
+        JOptionPane.showMessageDialog(parent, message, title, messageType);
+    }
+
+    private String buildInvalidMoveMessage(BoardSquare clickedSquare) {
+        int row = clickedSquare.getRow();
+        int column = clickedSquare.getColumn();
+        return String.format(MESSAGE_INVALID_MOVE_FORMAT, row + 1, column + 1);
+    }
+
+    private static final String MESSAGE_INVALID_SELECTION = "You tried to pick up the other player's piece! Get some glasses and pick a valid square.";
+    private static final String MESSAGE_INVALID_MOVE_FORMAT = "The move to row %d and column %d is either not valid or not legal for this piece. Choose another move location, and try using your brain this time!";
+    private static final String MESSAGE_ERROR_TITLE = "Illegal move";
+
 }

@@ -1,0 +1,15 @@
+
+^
+java:S2259f"CA "NullPointerException" could be thrown; "frame" is nullable here.(šòÃçùÿÿÿÿ
+M
+java:S6126P"2Replace this String concatenation with Text block.(Èë™úÿÿÿÿ
+@
+java:S3398^"%Move this method into "MenuListener".(¯€şÿÿÿÿ
+@
+java:S3398u"%Move this method into "MenuListener".(¼ ãûÿÿÿÿ
+;
+java:S3398M"%Move this method into "MenuListener".(Ï¯Úµ
+@
+java:S3398l"%Move this method into "MenuListener".(ê¤üúÿÿÿÿ
+;
+java:S3398V"%Move this method into "MenuListener".(»¢ãŒ
