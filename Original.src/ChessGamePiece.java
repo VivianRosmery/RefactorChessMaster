@@ -748,7 +748,7 @@ public abstract class ChessGamePiece{
     }*/
     // Segunda refactorización - Patron de simplificación
     // patron de eliminación de duplicación
-    public boolean isEnemy(ChessGameBoard board, int row, int col) {
+    /*public boolean isEnemy(ChessGameBoard board, int row, int col) {
         if (row > 7 || col > 7 || row < 0 || col < 0) {
             return false;
         }
@@ -766,7 +766,29 @@ public abstract class ChessGamePiece{
         }
 
         return false;
+    }*/
+    // Se vuelve a refactorizar el metodo isEnemy()
+    //Cuarta Refactorización de Codigo Critico - Segundo Avance
+    //Se usa los patrones de Singleton, Brigde y Builder
+    public boolean isEnemy(ChessGameBoard board, int row, int col) {
+        if (row > 7 || col > 7 || row < 0 || col < 0) {
+            return false;
+        }
+
+        ChessGamePiece enemyPiece = board.getCell(row, col).getPieceOnSquare();
+        if (enemyPiece == null || this.getColorOfPiece() == ChessGamePiece.UNASSIGNED
+                || enemyPiece.getColorOfPiece() == ChessGamePiece.UNASSIGNED) {
+            return false;
+        }
+
+        boolean isWhite = this.getColorOfPiece() == ChessGamePiece.WHITE;
+        boolean isBlack = this.getColorOfPiece() == ChessGamePiece.BLACK;
+        boolean isEnemyWhite = enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE;
+        boolean isEnemyBlack = enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK;
+
+        return (isWhite && isEnemyBlack) || (isBlack && isEnemyWhite);
     }
+
 
     // ----------------------------------------------------------
     /**

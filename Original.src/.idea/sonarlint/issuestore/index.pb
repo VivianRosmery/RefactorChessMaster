@@ -19,7 +19,10 @@ A
 	King.java,b\0\b014350ccdade3655fea00bb64a1867634fef7ff
 C
 ChessGameBoard.java,c\a\ca1e7608cec716bc45e59251b3bfbfcdd6d37a56
-C
-ChessGamePiece.java,5\1\51a58c19de990059d5c89e36406ea6f4537bca76
 @
 BoardSquare.java,7\f\7fbf404fc9d7cb00202db3517ccfc64065a03117
+:
+
+Queen.java,d\8\d81a68d9f0536f9e2a76d8ff7bdf55996658a3f0
+>
+QueenTest.java,9\6\96ea6ba332d1b557ccad913da706b63cd54a99b9
