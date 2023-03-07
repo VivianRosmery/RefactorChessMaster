@@ -1,10 +1,11 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.awt.GridLayout;
 import javax.swing.*;
 
 class ChessGraveyardTest {
-
+    // Prueba unitaria 3
+    // Verificar si la piezas se agregan correctamente
+    // al cementeerio de piezas
     @Test
     void testAddPiece() {
         ChessGamePiece piece = new Pawn(new ChessGameBoard(), 0, 0, ChessGamePiece.WHITE);
@@ -16,6 +17,8 @@ class ChessGraveyardTest {
         assertTrue(graveyard.getComponent(0) instanceof JLabel);
     }
 
+    //Verificar si la piezas se eliminan correctamente
+    // del cementeerio de piezas
     @Test
     void testClearGraveyard() {
         ChessGamePiece piece = new Pawn(new ChessGameBoard(), 0, 0, ChessGamePiece.WHITE);
