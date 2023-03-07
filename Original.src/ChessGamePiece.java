@@ -498,25 +498,20 @@ public abstract class ChessGamePiece{
      *            the column to move to
      * @return boolean true if the move was successful, false otherwise
      */
+    //Quinta Refactorización de Codigo Critico - Segundo Avance
+    // Se usa los patrones de Singleton, Brigde y Builder
     public boolean move( ChessGameBoard board, int row, int col ){
         if ( canMove( board, row, col ) ){
             String moveLog = this.toString() + " -> ";
             board.clearCell( pieceRow, pieceColumn );
             if ( isEnemy( board, row, col ) ){
-                ChessGraveyard graveyard;
-                ChessGameEngine gameEngine =
-                    ( (ChessPanel)board.getParent() ).getGameEngine();
+                ChessGraveyard graveyard; ChessGameEngine gameEngine =( (ChessPanel)board.getParent() ).getGameEngine();
                 if ( gameEngine.getCurrentPlayer() == 1 ){
-                    graveyard =
-                        ( (ChessPanel)board.getParent() ).getGraveyard( 2 );
+                    graveyard =( (ChessPanel)board.getParent() ).getGraveyard( 2 );
+                }else {
+                    graveyard = ( (ChessPanel)board.getParent() ).getGraveyard( 1 );
                 }
-                else
-                {
-                    graveyard =
-                        ( (ChessPanel)board.getParent() ).getGraveyard( 1 );
-                }
-                graveyard.addPiece(
-                    board.getCell( row, col ).getPieceOnSquare() );
+                graveyard.addPiece( board.getCell( row, col ).getPieceOnSquare() );
             }
             setPieceLocation( row, col );
             moveLog += " (" + row + ", " + col + ")";
@@ -526,9 +521,7 @@ public abstract class ChessGamePiece{
                 updatePossibleMoves( board );
             }
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
