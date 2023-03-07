@@ -294,7 +294,7 @@ public class ChessGameEngine {
      *
      * @param e the mouse event from the listener
      */
-    public void determineActionFromSquareClick(MouseEvent e) {
+    /*public void determineActionFromSquareClick(MouseEvent e) {
         BoardSquare squareClicked = (BoardSquare) e.getSource();
         ChessGamePiece pieceOnSquare = squareClicked.getPieceOnSquare();
         board.clearColorsOnBoard();
@@ -342,10 +342,66 @@ public class ChessGameEngine {
                 firstClick = true;
             }
         }
+    }*/
+
+    //Primera Refactorización de Codigo Critico - Segundo Avance
+    // Se usa los patrones de Singleton, Brigde y Builder
+    public void determineActionFromSquareClick(MouseEvent e) {
+        BoardSquare squareClicked = (BoardSquare) e.getSource();
+        ChessGamePiece pieceOnSquare = squareClicked.getPieceOnSquare();
+        board.clearColorsOnBoard();
+        if (firstClick) {
+            handleFirstClick(squareClicked);
+        } else {
+            handleSecondClick(squareClicked, pieceOnSquare);
+        }
     }
+
+    private void handleFirstClick(BoardSquare squareClicked) {
+        currentPiece = squareClicked.getPieceOnSquare();
+        if (selectedPieceIsValid()) {
+            currentPiece.showLegalMoves(board);
+            squareClicked.setBackground(Color.GREEN);
+            firstClick = false;
+        } else {
+            handleInvalidSelection(squareClicked);
+        }
+    }
+
+    private void handleInvalidSelection(BoardSquare squareClicked) {
+        if (currentPiece != null) {
+            showMessage(squareClicked, "You tried to pick up the other player's piece! " + "Get some glasses and pick a valid square.", "Illegal move");
+        } else {
+            showMessage(squareClicked, "You tried to pick up an empty square! " + "Get some glasses and pick a valid square.", "Illegal move");
+        }
+    }
+
+    private void handleSecondClick(BoardSquare squareClicked, ChessGamePiece pieceOnSquare) {
+        if (pieceOnSquare == null || !pieceOnSquare.equals(currentPiece)) {
+            handleValidMove(squareClicked);
+        } else {
+            firstClick = true;
+        }
+    }
+
+    private void handleValidMove(BoardSquare squareClicked) {
+        boolean moveSuccessful = currentPiece.move(board, squareClicked.getRow(), squareClicked.getColumn());
+        if (moveSuccessful) {
+            checkGameConditions();
+        } else {
+            showMessage(squareClicked, "The move is either not valid or not legal for this piece. Choose another move location, and try using your brain this time!", "Invalid move");
+        }
+        firstClick = true;
+    }
+
+    private void showMessage(BoardSquare squareClicked, String message, String title) {
+        JOptionPane.showMessageDialog(squareClicked, message, title, JOptionPane.ERROR_MESSAGE);
+    }
+
 }
-        //Primera Refactorización de Codigo Critico - Segundo Avance
-        // Se usa los patrones de Singleton, Brigde y Builder
+    //Primer intento de refactorización - Error
+    //Primera Refactorización de Codigo Critico - Segundo Avance
+    // Se usa los patrones de Singleton, Brigde y Builder
     /*public void determineActionFromSquareClick(MouseEvent e) {
         BoardSquare clickedSquare = (BoardSquare) e.getSource();
         ChessGamePiece pieceOnSquare = clickedSquare.getPieceOnSquare();

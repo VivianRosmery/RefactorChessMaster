@@ -10,13 +10,9 @@ A
 9
 	Rook.java,9\7\97ffa6114a472925053ac6da3ad8620ffc17213d
 ;
-Knight.java,f\d\fddd5022178bb16652d85e15e360bfdb42267de4
-;
 Bishop.java,c\8\c850a553a29c53f4cb498eb59fc5ba66f4967732
 =
 KingTest.java,0\a\0a91686264f828a72896ba681409440076d67758
-9
-	King.java,b\0\b014350ccdade3655fea00bb64a1867634fef7ff
 C
 ChessGameBoard.java,c\a\ca1e7608cec716bc45e59251b3bfbfcdd6d37a56
 @
