@@ -11,14 +11,7 @@ A
 	Rook.java,9\7\97ffa6114a472925053ac6da3ad8620ffc17213d
 ;
 Bishop.java,c\8\c850a553a29c53f4cb498eb59fc5ba66f4967732
-=
-KingTest.java,0\a\0a91686264f828a72896ba681409440076d67758
 C
 ChessGameBoard.java,c\a\ca1e7608cec716bc45e59251b3bfbfcdd6d37a56
 @
 BoardSquare.java,7\f\7fbf404fc9d7cb00202db3517ccfc64065a03117
-:
-
-Queen.java,d\8\d81a68d9f0536f9e2a76d8ff7bdf55996658a3f0
->
-QueenTest.java,9\6\96ea6ba332d1b557ccad913da706b63cd54a99b9

@@ -370,9 +370,11 @@ public class ChessGameEngine {
 
     private void handleInvalidSelection(BoardSquare squareClicked) {
         if (currentPiece != null) {
-            showMessage(squareClicked, "You tried to pick up the other player's piece! " + "Get some glasses and pick a valid square.", "Illegal move");
+            showMessage(squareClicked, "You tried to pick up the other player's piece! "
+                    + "Get some glasses and pick a valid square.", "Illegal move");
         } else {
-            showMessage(squareClicked, "You tried to pick up an empty square! " + "Get some glasses and pick a valid square.", "Illegal move");
+            showMessage(squareClicked, "You tried to pick up an empty square! "
+                    + "Get some glasses and pick a valid square.", "Illegal move");
         }
     }
 
@@ -389,7 +391,8 @@ public class ChessGameEngine {
         if (moveSuccessful) {
             checkGameConditions();
         } else {
-            showMessage(squareClicked, "The move is either not valid or not legal for this piece. Choose another move location, and try using your brain this time!", "Invalid move");
+            showMessage(squareClicked, "The move is either not valid or not legal for this piece. " +
+                    "Choose another move location, and try using your brain this time!", "Invalid move");
         }
         firstClick = true;
     }
